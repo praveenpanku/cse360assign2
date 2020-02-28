@@ -45,16 +45,20 @@ public class SimpleList {
 		
 		if(count == listSize)
 		{
-			listSize = (int) (listSize*1.5);
+			if(listSize == 1)       //because (int)1 * 1.5 = 1; 
+				listSize = 2;
+			else 
+				listSize = (int) (listSize * 1.5);
+			
 			int[] newList = new int[listSize];
-			for(int i=0;i<count;i++)
-				newList[i] = list[i];
+			for(int index = 0;index < count; index++)
+				newList[index] = list[index];
 			list = newList;
 		}
 		
-		for(int i = count;i > 0;i--)
+		for(int index = count;index > 0; index--)
 		{
-			list[i] = list[i-1];
+			list[index] = list[index-1];
 		}
 		list[0] = element;
 		count++;
@@ -76,15 +80,12 @@ public class SimpleList {
 		list[count-1] = 0;
 		count--;
 		
-		if (count==1)
-			return;
-		
 		if(count < (int)(listSize*0.75))
 		{
 			listSize = (int) (listSize*0.75);
 			int[] newList = new int[listSize];
-			for(int i=0;i<count;i++)
-				newList[i] = list[i];
+			for(int index = 0;index < count; index++)
+				newList[index] = list[index];
 			list = newList;
 		}
 	}
@@ -137,10 +138,14 @@ public class SimpleList {
 	{
 		if(count == listSize)
 		{
-			listSize = (int) (listSize*1.5);
+			if(listSize == 1)
+				listSize = 2;
+			else 
+				listSize = (int) (listSize * 1.5);
+			
 			int[] newList = new int[listSize];
-			for(int i=0;i<count;i++)
-				newList[i] = list[i];
+			for(int index = 0;index < count; index++)
+				newList[index] = list[index];
 			list = newList;
 		}
 		
@@ -178,5 +183,65 @@ public class SimpleList {
 	{
 		return listSize;
 	}
+	
+	public static void main(String[] args)
+	{
+		SimpleList a = new SimpleList();
+		a.add(10);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.add(20);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.add(30);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.add(40);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.add(50);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.add(60);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.add(70);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.add(80);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.remove(40);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.remove(30);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.remove(20);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.append(5);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.append(3);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.append(3);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.remove(50);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.remove(60);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.remove(70);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.remove(80);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.remove(10);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.remove(5);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.remove(3);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.remove(3);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.add(10);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.add(20);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.add(20);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.add(20);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+		a.add(20);
+		System.out.println(a.listSize + "  " + a.count + "  " + a.toString());
+	}
+
 	
 }
