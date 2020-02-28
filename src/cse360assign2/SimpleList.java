@@ -16,7 +16,7 @@ public class SimpleList {
 	
 	private int[] list;
 	private int count = 0;
-	private int listSize = 5;
+	private int listSize = 10;
 	
 	/**
 	 * Constructor. Create an array to hold 10 integers and set count to 0.
@@ -126,6 +126,57 @@ public class SimpleList {
 				return index;
 		}
 		return -1;
+	}
+	
+	/**
+	 * Appends an integer at end of list. Increments list size 
+	 * 	by 50% when list is full.
+	 * @param element to be appended 
+	 */
+	public void append(int element)
+	{
+		if(count == listSize)
+		{
+			listSize = (int) (listSize*1.5);
+			int[] newList = new int[listSize];
+			for(int i=0;i<count;i++)
+				newList[i] = list[i];
+			list = newList;
+		}
+		
+		list[count] = element;
+		count++;
+	}
+	
+	/**
+	 * 
+	 * @return first element of list
+	 */
+	public int first()
+	{
+		if(count == 0)
+			return -1;
+		return list[0];
+	}
+	
+	/**
+	 * 
+	 * @return last element of list
+	 */
+	public int last()
+	{
+		if(count == 0)
+			return -1;
+		return list[count-1];
+	}
+	
+	/**
+	 * 
+	 * @return number of possible locations in list
+	 */
+	public int size()
+	{
+		return listSize;
 	}
 	
 }
