@@ -16,15 +16,16 @@ public class SimpleList {
 	
 	private int[] list;
 	private int count = 0;
+	private int listSize = 5;
 	
 	/**
 	 * Constructor. Create an array to hold 10 integers and set count to 0.
 	 */
 	public SimpleList()
 	{
-		 
+		
 		count = 0;
-		list = new int[10];
+		list = new int[listSize];
 	}
 	
 	/**
@@ -41,15 +42,22 @@ public class SimpleList {
 			list[0] = element;
 			return;
 		}
-		if(count == 10)
-			count = 9;
+		
+		if(count == listSize)
+		{
+			listSize = (int) (listSize*1.5);
+			int[] newList = new int[listSize];
+			for(int i=0;i<count;i++)
+				newList[i] = list[i];
+			list = newList;
+		}
+		
 		for(int i = count;i > 0;i--)
 		{
 			list[i] = list[i-1];
 		}
 		list[0] = element;
-		if(count != 10)
-			count++;
+		count++;
 	}
 	
 	/**
@@ -67,6 +75,18 @@ public class SimpleList {
 		}
 		list[count-1] = 0;
 		count--;
+		
+		if (count==1)
+			return;
+		
+		if(count < (int)(listSize*0.75))
+		{
+			listSize = (int) (listSize*0.75);
+			int[] newList = new int[listSize];
+			for(int i=0;i<count;i++)
+				newList[i] = list[i];
+			list = newList;
+		}
 	}
 	
 	/**
@@ -107,4 +127,5 @@ public class SimpleList {
 		}
 		return -1;
 	}
+	
 }
